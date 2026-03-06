@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>春季烤肉焢窯派對 | 台糖高雄花卉農園中心</title>
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --primary-light: #4CAF50;
+            --secondary: #E65100;
+            --bg-color: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text-main: #333333;
+            --text-muted: #666666;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 頂部主視覺：改用充滿春天氣息的漸層色塊 */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 12px;
+            display: inline-block;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            font-weight: 800;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        /* 內容容器：留白讓手機閱讀更舒適 */
+        .container {
+            padding: 24px 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin: 30px 0 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background-color: var(--secondary);
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+
+        /* 手機版卡片設計 */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .card p {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .card p strong {
+            min-width: 65px;
+            display: inline-block;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        ul li::before {
+            content: '📌';
+            position: absolute;
+            left: 0;
+            top: 1px;
+            font-size: 1rem;
+        }
+
+        /* 手機專用：時間軸排版 */
+        .timeline-item {
+            display: flex;
+            margin-bottom: 16px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .time-badge {
+            flex: 0 0 70px;
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding-right: 12px;
+            border-right: 2px solid #eee;
+            margin-right: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* 注意事項高亮卡片 */
+        .notice-card {
+            background-color: #FFF8E1;
+            border-left: 4px solid var(--secondary);
+            box-shadow: none;
+        }
+
+        /* 底部 */
+        footer {
+            text-align: center;
+            padding: 30px 20px 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="subtitle">巧新科技 熔煉課 春季出遊</span>
+        <h1>春日野餐派對<br>🌸 烤肉 × 焢土窯</h1>
+        <p>遠離塵囂，享受親手生火、大口吃肉的野趣時光！</p>
+    </header>
+
+    <div class="container">
+        
+        <h2>活動資訊</h2>
+        <div class="card">
+            <p><strong>📅 日期：</strong>3月29日（星期日）</p>
+            <p><strong>⏰ 時間：</strong>10:00 ~ 16:00</p>
+            <p><strong>📍 地點：</strong>台糖高雄花卉農園中心 (烤肉區)</p>
+            <p><strong>🗺️ 地址：</strong>高雄市橋頭區創新路93號</p>
+        </div>
+
+        <h2>活動亮點</h2>
+        <div class="card">
+            <ul>
+                <li><strong>古早味焢土窯：</strong> 體驗傳統農村樂趣，親手搭建土窯，品嚐悶烤鮮甜地瓜與土窯雞。</li>
+                <li><strong>歡樂 BBQ 派對：</strong> 炭火烤肉滋滋作響，滿足所有人的味蕾。</li>
+                <li><strong>農園大探索：</strong> 園區腹地廣大，飯後可搭乘台糖五分車、體驗卡丁車或漫步自然生態區。</li>
+            </ul>
+        </div>
+
+        <h2>活動流程</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time-badge">10:00<br>10:30</div>
+                <div class="timeline-content">
+                    <h3>集合報到</h3>
+                    <p>於烤肉土窯區集合，確認分組並領取今日食材。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-badge">10:30<br>11:30</div>
+                <div class="timeline-content">
+                    <h3>焢窯大作戰</h3>
+                    <p>搭建土窯、燒柴生火。將食材放入土窯中悶烤。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-badge">11:30<br>14:00</div>
+                <div class="timeline-content">
+                    <h3>炭火烤肉大餐</h3>
+                    <p>等待土窯熟成的期間，同步生火烤肉！盡情享用美食。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-badge">14:00<br>14:30</div>
+                <div class="timeline-content">
+                    <h3>開窯驚喜</h3>
+                    <p>挖開土窯，驗收成果！品嚐熱騰騰的土窯雞與地瓜。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-badge">14:30<br>15:40</div>
+                <div class="timeline-content">
+                    <h3>自由活動</h3>
+                    <p>自由體驗園區設施（五分車、卡丁車或吃冰）。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-badge">15:40<br>16:00</div>
+                <div class="timeline-content">
+                    <h3>場地復原</h3>
+                    <p>協助清理桌面與垃圾，帶著滿滿回憶平安回家。</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>注意事項</h2>
+        <div class="card notice-card">
+            <ul>
+                <li><strong>準時抵達：</strong> 配合園區開窯時間，請務必於 10:00 準時抵達。</li>
+                <li><strong>服裝建議：</strong> 包含生火與泥土接觸，強烈建議穿著輕便不怕髒的衣物與包鞋。</li>
+                <li><strong>防曬防蚊：</strong> 戶外植被多，請記得攜帶防曬用品、帽子與防蚊液。</li>
+                <li><strong>場地規範：</strong> 嚴禁攜帶卡拉OK設備、發電機、野餐墊或帳篷。</li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <footer>
+        <p>2026 烤肉焢窯派對 | 活動總召：阿汝</p>
+    </footer>
+
+</body>
+</html>
