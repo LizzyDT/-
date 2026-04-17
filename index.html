@@ -3,256 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3/19 阿部壽司熱炒居酒屋 - 團體聚餐行程</title>
-    <!-- 引入 Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入 Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- 引入 Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans TC"', 'sans-serif'],
-                    },
-                    colors: {
-                        izakaya: {
-                            900: '#1a1a1a',
-                            800: '#2d2d2d',
-                            700: '#404040',
-                            gold: '#d4af37',
-                            red: '#8b0000',
-                            orange: '#f97316'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
+    <title>柴柴採購同步清單</title>
     <style>
-        body {
-            background-color: #121212;
-            color: #f3f4f6;
-        }
-        /* 日式傳統紋理背景 */
-        .pattern-bg {
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%232d2d2d' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
-        }
-        .glass-card {
-            background: rgba(45, 45, 45, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        :root { --shiba-orange: #f0a500; --shiba-cream: #fcf8e8; --shiba-brown: #634832; }
+        body { font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; background-color: var(--shiba-cream); margin: 0; padding: 10px; color: var(--shiba-brown); }
+        .header { text-align: center; padding: 15px; background: white; border-radius: 20px; border: 3px solid var(--shiba-orange); margin-bottom: 15px; }
+        .header h1 { margin: 0; font-size: 1.3rem; }
+        .category-title { background: var(--shiba-orange); color: white; padding: 5px 15px; border-radius: 10px; display: inline-block; margin: 10px 0; font-size: 0.9rem; }
+        .item-card { background: white; border-radius: 12px; padding: 12px; margin-bottom: 8px; display: flex; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .item-card.checked { background-color: #e0e0e0; filter: grayscale(1); opacity: 0.6; text-decoration: line-through; }
+        .checkbox { width: 25px; height: 25px; margin-right: 12px; accent-color: var(--shiba-orange); }
+        .item-info { flex-grow: 1; }
+        .item-name { font-weight: bold; font-size: 1rem; display: block; }
+        .item-meta { font-size: 0.8rem; color: #888; }
+        .price-input { width: 70px; padding: 6px; border: 1px solid var(--shiba-orange); border-radius: 8px; font-size: 0.9rem; text-align: center; }
+        .footer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--shiba-orange); color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 1.1rem; }
     </style>
 </head>
-<body class="pattern-bg min-h-screen flex flex-col font-sans antialiased">
+<body>
 
-    <!-- Header / Hero Section -->
-    <header class="relative pt-20 pb-16 px-6 text-center overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-izakaya-900/90 to-izakaya-900/40 z-0"></div>
-        <div class="relative z-10 max-w-3xl mx-auto">
-            <div class="inline-flex items-center justify-center p-3 bg-izakaya-red rounded-full mb-6 shadow-lg shadow-red-900/50">
-                <i data-lucide="utensils" class="w-8 h-8 text-white"></i>
-            </div>
-            <h1 class="text-4xl md:text-5xl font-black text-white mb-4 tracking-wider">阿部壽司 居酒屋之夜</h1>
-            <p class="text-xl text-gray-300 font-light tracking-widest mb-8">美食・暢飲・好友聚會</p>
-            
-            <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
-                <span class="flex items-center bg-izakaya-800 px-4 py-2 rounded-full border border-gray-700">
-                    <i data-lucide="calendar" class="w-4 h-4 mr-2 text-izakaya-orange"></i> 3月19日 (星期四)
-                </span>
-                <span class="flex items-center bg-izakaya-800 px-4 py-2 rounded-full border border-gray-700">
-                    <i data-lucide="clock" class="w-4 h-4 mr-2 text-izakaya-orange"></i> 18:00 入席
-                </span>
-                <span class="flex items-center bg-izakaya-800 px-4 py-2 rounded-full border border-gray-700">
-                    <i data-lucide="users" class="w-4 h-4 mr-2 text-izakaya-orange"></i> 5人聚餐
-                </span>
-            </div>
-        </div>
-    </header>
+<div class="header">
+    <h1>🐕 04/18 採購同步清單</h1>
+    <p style="margin:5px 0 0; font-size:0.8rem;">買完打勾，輸入數字會自動加總喔！</p>
+</div>
 
-    <!-- Main Content -->
-    <main class="flex-grow px-4 md:px-6 pb-20 -mt-6">
-        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-            
-            <!-- Left Column: Location & Info -->
-            <div class="md:col-span-1 space-y-6">
-                <!-- Location Card -->
-                <div class="glass-card rounded-2xl p-6 shadow-2xl">
-                    <h2 class="text-xl font-bold mb-5 flex items-center text-white">
-                        <i data-lucide="map-pin" class="w-5 h-5 mr-2 text-izakaya-orange"></i> 餐廳資訊
-                    </h2>
-                    <div class="space-y-4 text-gray-300 text-sm">
-                        <div>
-                            <p class="text-gray-400 text-xs mb-1">店名</p>
-                            <p class="font-medium text-base text-white">阿部壽司熱炒居酒屋</p>
-                        </div>
-                        <div>
-                            <p class="text-gray-400 text-xs mb-1">地址</p>
-                            <p class="leading-relaxed">屏東縣屏東市和平路276-2號</p>
-                        </div>
-                        <div>
-                            <p class="text-gray-400 text-xs mb-1">電話</p>
-                            <p>08-733 3079</p>
-                        </div>
-                    </div>
-                    <a href="https://maps.google.com/?q=屏東縣屏東市和平路276-2號" target="_blank" class="mt-6 w-full flex items-center justify-center bg-izakaya-red hover:bg-red-800 text-white py-3 px-4 rounded-xl transition-colors duration-300 font-medium">
-                        <i data-lucide="navigation" class="w-4 h-4 mr-2"></i> 開啟 Google 導航
-                    </a>
+<div id="app">
+    </div>
+
+<div style="height: 70px;"></div>
+
+<div class="footer">
+    目前總計：NT$ <span id="total">0</span>
+</div>
+
+<script>
+    const shoppingList = [
+        { c: "肉類海鮮", items: [
+            {n: "蝦", q: "3斤", b: 900}, {n: "香腸", q: "16條", b: 300}, {n: "五花肉片", q: "60片", b: 800},
+            {n: "牛肉", q: "2盒", b: 5000}, {n: "培根", q: "70片", b: 500}, {n: "干貝", q: "1盒", b: 800},
+            {n: "鹹豬肉 200g", q: "3塊", b: 600}, {n: "小雞腿", q: "30支", b: 300}, {n: "雞翅", q: "30個", b: 300},
+            {n: "魷魚", q: "6支", b: 800}, {n: "蛤仔", q: "3份", b: 200}
+        ]},
+        { c: "蔬菜類", items: [
+            {n: "金針菇", q: "3包", b: 0}, {n: "甜玉米", q: "30支", b: 0}, {n: "絲瓜", q: "2條", b: 0},
+            {n: "香菇(新鮮)", q: "30朵", b: 0}, {n: "馬鈴薯(烤)", q: "5顆", b: 0}, {n: "地瓜", q: "36顆", b: 0},
+            {n: "筊白筍", q: "40支", b: 300}, {n: "節瓜", q: "3支", b: 0}, {n: "美生菜", q: "5顆", b: 0},
+            {n: "杏鮑菇", q: "10小條", b: 0}, {n: "洋蔥", q: "1顆", b: 0}, {n: "青椒/甜椒", q: "各3顆", b: 0},
+            {n: "蔥/蒜頭", q: "1包", b: 0}, {n: "高麗菜", q: "2顆", b: 0}
+        ]},
+        { c: "加工與其他", items: [
+            {n: "黑輪", q: "2斤", b: 300}, {n: "米血", q: "5包", b: 200}, {n: "綜合丸子", q: "50個", b: 300},
+            {n: "鑫鑫腸", q: "1包", b: 300}, {n: "綜合火鍋料", q: "3包", b: 1500}, {n: "豆腐皮/凍豆腐", q: "1袋/2盒", b: 0},
+            {n: "蜂蜜蛋糕", q: "1個", b: 150}, {n: "調味料類", q: "一組", b: 0}
+        ]}
+    ];
+
+    const app = document.getElementById('app');
+    shoppingList.forEach(group => {
+        const title = document.createElement('div');
+        title.className = 'category-title';
+        title.innerText = group.c;
+        app.appendChild(title);
+
+        group.items.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'item-card';
+            card.innerHTML = `
+                <input type="checkbox" class="checkbox" onchange="this.parentElement.classList.toggle('checked')">
+                <div class="item-info">
+                    <span class="item-name">${item.n}</span>
+                    <span class="item-meta">${item.q} | 預算: ${item.b || '--'}</span>
                 </div>
+                <input type="number" class="price-input" placeholder="實際$" oninput="calc()">
+            `;
+            app.appendChild(card);
+        });
+    });
 
-                <!-- Highlights Card -->
-                <div class="glass-card rounded-2xl p-6 shadow-2xl">
-                    <h2 class="text-xl font-bold mb-4 flex items-center text-white">
-                        <i data-lucide="star" class="w-5 h-5 mr-2 text-izakaya-gold"></i> 必點推薦
-                    </h2>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-gray-300">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 mr-3 text-izakaya-gold"></i> 綜合生魚片
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 mr-3 text-izakaya-gold"></i> 明太子雞翅
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 mr-3 text-izakaya-gold"></i> 炭烤牛肉串
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 mr-3 text-izakaya-gold"></i> 鹽烤香魚
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 mr-3 text-izakaya-gold"></i> 鮮蚵烘蛋
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Right Column: Timeline & Participants -->
-            <div class="md:col-span-2 space-y-6">
-                <!-- Timeline Card -->
-                <div class="glass-card rounded-2xl p-6 md:p-8 shadow-2xl">
-                    <h2 class="text-2xl font-bold mb-8 flex items-center text-white border-b border-gray-700 pb-4">
-                        <i data-lucide="list-todo" class="w-6 h-6 mr-3 text-izakaya-orange"></i> 活動行程表
-                    </h2>
-                    
-                    <div class="relative border-l-2 border-gray-700 ml-3 md:ml-4 space-y-8">
-                        <!-- Timeline Item 1 -->
-                        <div class="relative pl-8">
-                            <div class="absolute -left-[9px] top-1 w-4 h-4 bg-izakaya-800 border-2 border-gray-400 rounded-full"></div>
-                            <div class="flex flex-col md:flex-row md:items-center mb-1">
-                                <span class="text-izakaya-orange font-bold text-lg md:w-24">17:50</span>
-                                <h3 class="text-white text-lg font-medium">餐廳門口集合</h3>
-                            </div>
-                            <p class="text-gray-400 text-sm">請大家盡量準時抵達，先到的朋友可以先在門口稍候。</p>
-                        </div>
-                        
-                        <!-- Timeline Item 2 -->
-                        <div class="relative pl-8">
-                            <div class="absolute -left-[9px] top-1 w-4 h-4 bg-izakaya-orange border-2 border-izakaya-orange rounded-full shadow-[0_0_10px_rgba(249,115,22,0.5)]"></div>
-                            <div class="flex flex-col md:flex-row md:items-center mb-1">
-                                <span class="text-izakaya-orange font-bold text-lg md:w-24">18:00</span>
-                                <h3 class="text-white text-lg font-medium">準時入席</h3>
-                            </div>
-                            <p class="text-gray-400 text-sm">由訂位人帶領入座，確認人數並開始點餐。</p>
-                        </div>
-
-                        <!-- Timeline Item 3 -->
-                        <div class="relative pl-8">
-                            <div class="absolute -left-[9px] top-1 w-4 h-4 bg-izakaya-800 border-2 border-gray-400 rounded-full"></div>
-                            <div class="flex flex-col md:flex-row md:items-center mb-1">
-                                <span class="text-izakaya-orange font-bold text-lg md:w-24">18:15</span>
-                                <h3 class="text-white text-lg font-medium">舉杯！開動啦</h3>
-                            </div>
-                            <p class="text-gray-400 text-sm">大口吃肉、開心暢飲，享受日式料理與熱炒的美好夜晚。</p>
-                        </div>
-
-                        <!-- Timeline Item 4 -->
-                        <div class="relative pl-8">
-                            <div class="absolute -left-[9px] top-1 w-4 h-4 bg-izakaya-800 border-2 border-gray-400 rounded-full"></div>
-                            <div class="flex flex-col md:flex-row md:items-center mb-1">
-                                <span class="text-izakaya-orange font-bold text-lg md:w-24">20:30</span>
-                                <h3 class="text-white text-lg font-medium">歡樂結帳與合照</h3>
-                            </div>
-                            <p class="text-gray-400 text-sm">活動預計告一段落，大家平均分攤費用，並在門口拍張大合照！</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Participants Card -->
-                <div class="glass-card rounded-2xl p-6 md:p-8 shadow-2xl">
-                    <h2 class="text-2xl font-bold mb-6 flex items-center text-white border-b border-gray-700 pb-4">
-                        <i data-lucide="users-round" class="w-6 h-6 mr-3 text-izakaya-orange"></i> 參與人員清單
-                    </h2>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        <!-- Participant 1 -->
-                        <div class="bg-izakaya-900/50 border border-gray-700 rounded-xl p-4 flex items-center space-x-3 hover:border-izakaya-orange transition-colors">
-                            <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 shrink-0">
-                                <i data-lucide="user" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-white font-medium text-sm">邱彥霖</p>
-                                <p class="text-gray-400 text-xs font-mono mt-0.5">H8691</p>
-                            </div>
-                        </div>
-                        <!-- Participant 2 -->
-                        <div class="bg-izakaya-900/50 border border-gray-700 rounded-xl p-4 flex items-center space-x-3 hover:border-izakaya-orange transition-colors">
-                            <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 shrink-0">
-                                <i data-lucide="user" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-white font-medium text-sm">章硯竹</p>
-                                <p class="text-gray-400 text-xs font-mono mt-0.5">H9258</p>
-                            </div>
-                        </div>
-                        <!-- Participant 3 -->
-                        <div class="bg-izakaya-900/50 border border-gray-700 rounded-xl p-4 flex items-center space-x-3 hover:border-izakaya-orange transition-colors">
-                            <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 shrink-0">
-                                <i data-lucide="user" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-white font-medium text-sm">葉建凱</p>
-                                <p class="text-gray-400 text-xs font-mono mt-0.5">H9359</p>
-                            </div>
-                        </div>
-                        <!-- Participant 4 -->
-                        <div class="bg-izakaya-900/50 border border-gray-700 rounded-xl p-4 flex items-center space-x-3 hover:border-izakaya-orange transition-colors">
-                            <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 shrink-0">
-                                <i data-lucide="user" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-white font-medium text-sm">郭品辰</p>
-                                <p class="text-gray-400 text-xs font-mono mt-0.5">H9490</p>
-                            </div>
-                        </div>
-                        <!-- Participant 5 -->
-                        <div class="bg-izakaya-900/50 border border-gray-700 rounded-xl p-4 flex items-center space-x-3 hover:border-izakaya-orange transition-colors">
-                            <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 shrink-0">
-                                <i data-lucide="user" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-white font-medium text-sm">洪郁鈞</p>
-                                <p class="text-gray-400 text-xs font-mono mt-0.5">H8258</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-8 text-center text-gray-500 text-sm border-t border-gray-800 bg-izakaya-900 mt-auto">
-        <p>期待 3/19 的到來，大家不見不散！🍻</p>
-    </footer>
-
-    <!-- Initialize Icons -->
-    <script>
-        lucide.createIcons();
-    </script>
+    function calc() {
+        let t = 0;
+        document.querySelectorAll('.price-input').forEach(i => t += Number(i.value) || 0);
+        document.getElementById('total').innerText = t.toLocaleString();
+    }
+</script>
 </body>
 </html>
